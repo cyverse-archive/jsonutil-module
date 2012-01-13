@@ -5,6 +5,7 @@
 .options
 .project
 .settings
+.gwt-tmp
 bin
 # the Mac .DS_Store directory
 .DS_Store

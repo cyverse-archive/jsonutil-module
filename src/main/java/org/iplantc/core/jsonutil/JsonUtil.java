@@ -153,13 +153,17 @@ public class JsonUtil {
      * @return
      */
     public static JSONObject getObject(final String json) {
-        JSONValue val = JSONParser.parseStrict(json);
-
-        if (val == null) {
+        try {
+            JSONValue val = JSONParser.parseStrict(json);
+            if (val == null) {
+                return null;
+            } else {
+                return val.isObject();
+            }
+        } catch (Exception e) {
             return null;
-        } else {
-            return val.isObject();
         }
+
     }
 
     /**

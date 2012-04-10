@@ -1,7 +1,9 @@
 package org.iplantc.core.jsonutil;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
@@ -450,4 +452,52 @@ public class JsonUtil {
 
         return ret;
     }
+
+    /**
+     * Convert a Map<String,Object> to JSONObject
+     * 
+     * @param map to be converted to {@link JSONObject}
+     * @return {@link JSONObject}
+     */
+    public static JSONObject getJSONObjectFromMap(Map<String, String> map) {
+        if (map == null) {
+            return null;
+        }
+
+        JSONObject obj = new JSONObject();
+        if (map.size() == 0) {
+            return obj;
+        }
+
+        for (String key : map.keySet()) {
+            obj.put(key, new JSONString(map.get(key)));
+        }
+
+        return obj;
+    }
+
+    /**
+     * Convert a JSONObject to Map<String, String)
+     * 
+     * @param obj
+     * @return {@link Map}
+     */
+    public static Map<String, String> getMapFromJSONObject(JSONObject obj) {
+        if (obj == null) {
+            return null;
+        }
+
+        Map<String, String> map = new HashMap<String, String>();
+
+        if (isEmpty(obj)) {
+            return map;
+        }
+
+        for (String key : obj.keySet()) {
+            map.put(key, getString(obj, key));
+        }
+
+        return map;
+    }
+
 }

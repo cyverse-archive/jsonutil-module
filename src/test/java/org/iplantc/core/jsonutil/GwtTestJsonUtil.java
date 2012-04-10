@@ -1,10 +1,13 @@
 package org.iplantc.core.jsonutil;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.google.gwt.json.client.JSONBoolean;
 import com.google.gwt.json.client.JSONNumber;
+import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONString;
 import com.google.gwt.json.client.JSONValue;
@@ -149,5 +152,43 @@ public class GwtTestJsonUtil extends GWTTestCase {
         assertNull(JsonUtil.buildJsonArrayString(null));
         assertEquals("[\"asdf\",\"2324523\",\"lkjlkjlkj\"]",
                 JsonUtil.buildJsonArrayString(Arrays.asList("asdf", "2324523", "lkjlkjlkj")));
+    }
+
+    public void testGetJSONObjectFromMapEmpty() {
+        JSONObject obj = JsonUtil.getJSONObjectFromMap(null);
+        assertNull(obj);
+        obj = JsonUtil.getJSONObjectFromMap(new HashMap<String, String>());
+        assertNotNull(obj);
+    }
+
+    public void testGetJSONObjectFromMap() {
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("foo", "bar");
+        map.put("tic", "tac");
+        JSONObject obj = JsonUtil.getJSONObjectFromMap(map);
+
+        assertEquals(map.get("foo"), JsonUtil.getString(obj, "foo"));
+        assertEquals(map.keySet().size(), obj.keySet().size());
+
+    }
+
+    public void testGetMapFromJSONObjectEmpty() {
+        JSONObject obj = null;
+        Map<String, String> map = JsonUtil.getMapFromJSONObject(obj);
+        assertNull(map);
+
+        map = JsonUtil.getMapFromJSONObject(new JSONObject());
+        assertNotNull(map);
+        assertEquals(0, map.keySet().size());
+    }
+
+    public void testGetMapFromJSONObject() {
+        JSONObject obj = new JSONObject();
+        obj.put("foo", new JSONString("bar"));
+        obj.put("tic", new JSONString("tac"));
+        Map<String, String> map = JsonUtil.getMapFromJSONObject(obj);
+        assertNotNull(map);
+        assertEquals(JsonUtil.getString(obj, "tic"), map.get("tic"));
+        assertEquals(map.keySet().size(), obj.keySet().size());
     }
 }

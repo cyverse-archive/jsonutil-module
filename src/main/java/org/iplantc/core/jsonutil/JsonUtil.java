@@ -1,5 +1,7 @@
 package org.iplantc.core.jsonutil;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -498,6 +500,28 @@ public class JsonUtil {
         }
 
         return map;
+    }
+
+    /**
+     * A util method to generate MD5 hash
+     * 
+     * 
+     * @param json input json as string
+     * @return a hash based on the input
+     */
+
+    public byte[] generateHash(String json) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5"); //$NON-NLS-1$
+            md.reset();
+            md.update(json.getBytes());
+            return md.digest();
+        } catch (NoSuchAlgorithmException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
 }

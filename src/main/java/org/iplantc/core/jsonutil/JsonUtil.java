@@ -510,7 +510,7 @@ public class JsonUtil {
      * @return a hash based on the input
      */
 
-    public byte[] generateHash(String json) {
+    public static byte[] generateHash(String json) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5"); //$NON-NLS-1$
             md.reset();

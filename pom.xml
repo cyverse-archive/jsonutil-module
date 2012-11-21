@@ -7,7 +7,7 @@
 	<groupId>org.iplantc.core</groupId>
 	<artifactId>jsonutil</artifactId>
 	<packaging>jar</packaging>
-	<version>dev-SNAPSHOT</version>
+	<version>gxt3Sandbox-SNAPSHOT</version>
 	<name>The iPlant Collaborative widgets for Tools integration</name>
 	<url>http://project.iplantcollaborative.org</url>
 	<!-- convenience to define GWT version in one place -->
@@ -82,7 +82,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>gwt-maven-plugin</artifactId>
-				<version>2.5.0-rc1</version>
+				<version>${gwt.version}</version>
 				<executions>
 					<execution>
 						<goals>

@@ -14,6 +14,7 @@ import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONString;
 import com.google.gwt.json.client.JSONValue;
+import com.google.web.bindery.autobean.shared.Splittable;
 
 /**
  * Provides JSON utility operations.
@@ -474,5 +475,41 @@ public class JsonUtil {
 
         return null;
     }
+    
+    /**
+     * A convenience method which passes a splittable's payload to the native
+     * {@link #prettyPrint(String, String, int)} method with default values.
+     * 
+     * @param split the splittable whose payload will be pretty printed
+     * @return
+     */
+    public static String prettyPrint(Splittable split){
+        return prettyPrint(split.getPayload(), "", 4);
+    }
+    
+    /**
+     * Returns the pretty printed output of the given splittable's payload, printed with the given
+     * spaces.
+     * 
+     * @param split the splittable whose payload will be pretty printed
+     * @param space
+     * @return
+     */
+    public static String prettyPrint(Splittable split, int space) {
+        return prettyPrint(split.getPayload(), "", space);
+    }
+
+    /**
+     * 
+     * A native method that calls java script method to pretty print json.
+     * 
+     * @param json the json to pretty print
+     * @param replacer
+     * @param space the char to used for formatting
+     * @return the pretty print version of json
+     */
+    public native static String prettyPrint(String json, String replacer, int space) /*-{
+        return $wnd.JSON.stringify($wnd.JSON.parse(json), replacer, space);
+    }-*/;
 
 }

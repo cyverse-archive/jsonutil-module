@@ -52,7 +52,14 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.14</version>
 		</dependency>
-		
+
+                <dependency>
+                    <groupId>com.extjs</groupId>
+                    <artifactId>gxt</artifactId>
+                    <version>2.2.5</version>
+                    <scope>provided</scope>
+                </dependency>
+
 		<dependency>
 			<groupId>com.sencha.gxt</groupId>
 			<artifactId>gxt</artifactId>
@@ -72,7 +79,7 @@
 			<version>2.5.1</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 	</dependencies>
 
 	<build>
@@ -152,8 +159,3 @@
 		</repository>
 	</repositories>
 </project>
-
-
-
-
-

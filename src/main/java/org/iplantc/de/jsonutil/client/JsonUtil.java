@@ -1,4 +1,4 @@
-package org.iplantc.core.jsonutil;
+package org.iplantc.de.jsonutil.client;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

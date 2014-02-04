@@ -1,8 +1,9 @@
-package org.iplantc.core.jsonutil;
+package org.iplantc.de.jsonutil.client;
 
 import java.util.Arrays;
 import java.util.List;
 
+import org.iplantc.de.jsonutil.client.JsonUtil;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -16,7 +17,7 @@ import static org.junit.Assert.*;
 
 
 /**
- * Unit tests for the {@link JsonUtil} class.
+ * Unit tests for the {@link org.iplantc.de.jsonutil.client.JsonUtil} class.
  * 
  * TODO JDS Evaluate necessity of ignored test cases.
  * If ignored test cases are necessary, they will need to be in a 
